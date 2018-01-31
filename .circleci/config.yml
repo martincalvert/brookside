@@ -22,4 +22,4 @@ jobs:
           fingerprints:
             - 1c:95:a5:5d:45:1f:d6:0a:0a:74:ac:77:00:10:9a:6c
       - run: sudo apt install -y rsync
-      - run: rsync -avz -e "ssh" ~/repo/ u75336870@home502473674.1and1-data.host:Brookside/
+      - run: rsync -avz -e "ssh -o StrictHostKeyChecking=no" ~/repo/ u75336870@home502473674.1and1-data.host:Brookside/
