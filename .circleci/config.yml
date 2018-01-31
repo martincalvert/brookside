@@ -4,18 +4,24 @@
 #
 version: 2
 jobs:
-  build:
+  validate-html:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - cd repo
+      - npm install html-validator
+      - node tests/html.js
+
+  deploy:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
 
     working_directory: ~/repo
-
     steps:
       - checkout
       - add_ssh_keys:
@@ -24,3 +30,15 @@ jobs:
       - run: sudo apt install -y rsync
       - run: ssh-keyscan -H home502473674.1and1-data.host >> ~/.ssh/known_hosts
       - run: rsync -avz -e "ssh" ~/repo/ u75336870@home502473674.1and1-data.host:Brookside/
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - validate-html
+      - deploy:
+          requires:
+            - validate-html
+          filters:
+            branches:
+              only: master
