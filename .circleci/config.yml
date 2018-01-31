@@ -18,6 +18,5 @@ jobs:
 
     steps:
       - checkout
-
-      # Download and cache dependencies
+      - run: sudo apt install -y rsync
       - run: rsync -avz -e "ssh" ~/clone/ u75336870@home502473674.1and1-data.host:Brookside/
