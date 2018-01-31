@@ -23,7 +23,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: rm -rf .git .circleci .DS_STORE README.md
+      - run: rm -rf .git .circleci .DS_Store README.md
       - add_ssh_keys:
           fingerprints:
             - 1c:95:a5:5d:45:1f:d6:0a:0a:74:ac:77:00:10:9a:6c
