@@ -8,18 +8,26 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
-
     working_directory: ~/repo
     steps:
       - checkout
       - run: npm install html-validator
       - run: node tests/html.js
 
+  validate-css:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:7.10
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: npm install csslint
+      - run: csslint assets/css/main.css
+
   deploy:
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
-
     working_directory: ~/repo
     steps:
       - checkout
