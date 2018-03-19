@@ -2,6 +2,34 @@
   display: none;
 }
 
+.ui.vertical.segment {
+  border-bottom: none;
+}
+
+.skew{
+	position: relative;
+	transform: skewY(-3deg);
+	margin-top: -100px;
+	min-height: 30vh;
+	z-index: 100;
+}
+
+.skew > div {
+  transform: skewY(3deg);
+}
+
+.skew-opp{
+	position: relative;
+	transform: skewY(3deg);
+	margin-top: -100px;
+	min-height: 30vh;
+	z-index: 100;
+}
+
+.skew-opp > div {
+  transform: skewY(-3deg);
+}
+
 .masthead.segment {
   min-height: 30vh;
   padding: 1em 0;
