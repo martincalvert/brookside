@@ -40,6 +40,11 @@
 .masthead .ui.menu .ui.button {
   margin-left: 0.5em;
 }
+
+.modal {
+  height: 600px;
+}
+
 .masthead .ui.header {
   margin-top: 3em;
   margin-bottom: 0;
